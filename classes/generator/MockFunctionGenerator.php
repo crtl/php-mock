@@ -54,8 +54,14 @@ class MockFunctionGenerator
         $parameterBuilder = new ParameterBuilder();
         $parameterBuilder->build($name);
 
+        $namespace = $this->mock->getNamespace();
+        $namespace_str = !empty($namespace) && $namespace !== "\\"
+            ? sprintf("namespace %s;", $this->mock->getNamespace())
+            : ""
+        ;
+
         $data = [
-            "namespace" => $this->mock->getNamespace(),
+            "namespace" => $namespace_str,
             "name"      => $name,
             "fqfn"      => $this->mock->getFQFN(),
             "signatureParameters"   => $parameterBuilder->getSignatureParameters(),

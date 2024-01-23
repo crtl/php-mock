@@ -1,4 +1,4 @@
-namespace {namespace};
+{namespace}
 
 use phpmock\generator\MockFunctionGenerator;
 
